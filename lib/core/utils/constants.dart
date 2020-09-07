@@ -1,5 +1,6 @@
 //Routes
 const String peopleCounterRoute = '/people_counter';
+const String bmiCalculatorRoute = '/bmi_calculator';
 
 //Assets
 const String assetsDirectory = 'assets/images/';

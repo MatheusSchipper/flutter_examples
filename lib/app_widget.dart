@@ -13,7 +13,7 @@ class AppWidget extends StatelessWidget {
         accentColor: Colors.green,
         textTheme: TextTheme(
           bodyText2: TextStyle(
-            color: Colors.green[100],
+            color: Colors.green,
             fontWeight: FontWeight.bold,
             fontSize: 40,
           ),
