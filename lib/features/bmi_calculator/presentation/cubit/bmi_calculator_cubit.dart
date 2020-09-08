@@ -1,38 +1,50 @@
-import 'dart:math';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:examples/core/utils/constants.dart';
+import 'package:examples/core/utils/input_converter.dart';
+import 'package:examples/features/bmi_calculator/domain/usecases/get_bmi_usecase.dart';
 import 'package:meta/meta.dart';
 
 part 'bmi_calculator_state.dart';
 
 class BmiCalculatorCubit extends Cubit<BmiCalculatorState> {
-  BmiCalculatorCubit() : super(BmiCalculatorInitial());
+  final GetBmiUsecase usecase;
+  final InputConverter converter;
+
+  BmiCalculatorCubit({
+    @required this.usecase,
+    @required this.converter,
+  }) : super(BmiCalculatorInitial());
 
   void calculateBmi(String weight, String height) {
-    try {
-      emit(BmiCalculatorCalculating());
-      final bmi = double.parse(weight) / pow(double.parse(height) / 100, 2);
-
-      var result = "";
-      final bmiFormatted = bmi.toStringAsPrecision(3);
-      if (bmi < 18.6) {
-        result = "Abaixo do peso";
-      } else if (bmi >= 18.6 && bmi < 24.9) {
-        result = "Peso Ideal";
-      } else if (bmi >= 24.9 && bmi < 29.9) {
-        result = "Levemente Acima do Peso";
-      } else if (bmi >= 29.9 && bmi < 34.9) {
-        result = "Obesidade Grau I";
-      } else if (bmi >= 34.9 && bmi < 39.9) {
-        result = "Obesidade Grau I";
-      } else {
-        result = "Obesidade Grau III";
-      }
-      emit(BmiCalculatorDone(bmiResult: '$result - IMC($bmiFormatted)'));
-    } on FormatException {
-      emit(BmiCalculatorError(errorMessage: 'Dados inválidos'));
-    }
+    emit(BmiCalculatorCalculating());
+    var weightValueResult = converter.stringToDouble(weight);
+    double weightValue;
+    weightValueResult.fold(
+      (failure) {
+        emit(BmiCalculatorError(errorMessage: invalidInputWeightMessage));
+        return;
+      },
+      (successWeight) {
+        weightValue = successWeight;
+        var heightValueResult = converter.stringToDouble(height);
+        double heightValue;
+        heightValueResult.fold(
+          (failure) {
+            emit(BmiCalculatorError(errorMessage: invalidInputHeightMessage));
+            return;
+          },
+          (successHeight) {
+            heightValue = successHeight;
+            final bmiResult = usecase.getBmi(weightValue, heightValue);
+            bmiResult.fold((failure) {
+              emit(BmiCalculatorError(errorMessage: failure.message));
+              return;
+            }, (success) => emit(BmiCalculatorDone(bmiResult: success)));
+          },
+        );
+      },
+    );
   }
 
   void reset() {

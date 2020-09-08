@@ -18,7 +18,9 @@ class _BmiCalculatorViewState extends State<BmiCalculatorView> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   void _resetFilters(BuildContext context) {
+    weightController.text = '';
     weightController.clear();
+    heightController.text = '';
     heightController.clear();
     context.bloc<BmiCalculatorCubit>().reset();
     _formKey.currentState.reset();
