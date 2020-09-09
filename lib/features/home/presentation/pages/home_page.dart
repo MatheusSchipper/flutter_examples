@@ -35,6 +35,10 @@ class HomePage extends StatelessWidget {
                 onPressed: () => Modular.to.pushNamed(bmiCalculatorRoute),
               ),
             ),
+            ButtonWidget(
+              text: '3 - Conversor de moedas',
+              onPressed: () => Modular.to.pushNamed(currencyConverterRoute),
+            ),
           ],
         ),
       ),

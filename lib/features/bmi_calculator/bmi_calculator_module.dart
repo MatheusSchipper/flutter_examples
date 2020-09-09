@@ -20,6 +20,6 @@ class BmiCalculatorModule extends ChildModule {
         ModularRouter(
           Modular.initialRoute,
           child: (context, args) => BmiCalculatorPage(),
-        )
+        ),
       ];
 }

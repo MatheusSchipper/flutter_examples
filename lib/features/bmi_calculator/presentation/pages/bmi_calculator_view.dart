@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import '../cubit/bmi_calculator_cubit.dart';
 import '../widgets/info_text_widget.dart';
@@ -94,6 +95,7 @@ class _BmiCalculatorViewState extends State<BmiCalculatorView> {
                   RaisedButtonWidget(
                       text: 'Calcular',
                       onPressed: () {
+                        Modular.to.pushNamed('/teste', arguments: 'teste');
                         if (_formKey.currentState.validate())
                           context.bloc<BmiCalculatorCubit>().calculateBmi(
                                 weightController.text,

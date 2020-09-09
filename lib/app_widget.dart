@@ -11,6 +11,16 @@ class AppWidget extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.black,
         accentColor: Colors.green,
+        inputDecorationTheme: InputDecorationTheme(
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.green[900]),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.green),
+            borderRadius: BorderRadius.circular(15),
+          ),
+        ),
         textTheme: TextTheme(
           bodyText2: TextStyle(
             color: Colors.green,

@@ -5,6 +5,8 @@ import 'package:examples/features/bmi_calculator/data/repositories/bmi_calculato
 import 'package:examples/features/bmi_calculator/domain/repositories_interfaces/bmi_calculator_repository_interface.dart';
 import 'package:examples/features/bmi_calculator/domain/usecases/get_bmi_usecase.dart';
 import 'package:examples/features/bmi_calculator/presentation/cubit/bmi_calculator_cubit.dart';
+import 'package:examples/features/currency_converter/currency_converter_module.dart';
+import 'package:examples/features/currency_converter/presentation/pages/currency_converter_page.dart';
 import 'package:examples/features/home/presentation/pages/home_page.dart';
 import 'package:examples/features/people_counter/people_counter_module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -31,6 +33,10 @@ class HomeModule extends ChildModule {
         ModularRouter(
           bmiCalculatorRoute,
           module: BmiCalculatorModule(),
+        ),
+        ModularRouter(
+          currencyConverterRoute,
+          module: CurrencyConverterModule(),
         ),
       ];
 }
