@@ -19,7 +19,6 @@ void main() {
   IGetBmiUsecase mockUsecase;
   IInputConverter mockInputConverter;
   double testWeight = 100;
-  double testHeight = 100;
   String testWeightString = "100";
   String testHeightString = "100";
   String testResult = 'Obesidade Grau III - IMC(${100.toStringAsFixed(2)})';

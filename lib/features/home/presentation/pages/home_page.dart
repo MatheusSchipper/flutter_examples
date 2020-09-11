@@ -1,11 +1,10 @@
-import 'package:examples/core/utils/constants.dart';
-import 'package:examples/core/utils/input_converter.dart';
-import 'package:examples/features/bmi_calculator/domain/usecases/get_bmi_usecase.dart';
-import 'package:examples/features/bmi_calculator/presentation/cubit/bmi_calculator_cubit.dart';
-import 'package:examples/features/home/presentation/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import '../../../../core/utils/constants.dart';
+import '../../../bmi_calculator/presentation/cubit/bmi_calculator_cubit.dart';
+import '../widgets/button_widget.dart';
 
 class HomePage extends StatelessWidget {
   @override

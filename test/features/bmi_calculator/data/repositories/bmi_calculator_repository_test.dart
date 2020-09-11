@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:examples/core/exceptions/failures.dart';
 import 'package:examples/features/bmi_calculator/bmi_calculator_module.dart';
-import 'package:examples/features/bmi_calculator/data/repositories/bmi_calculator_repository.dart';
 import 'package:examples/features/bmi_calculator/domain/repositories_interfaces/bmi_calculator_repository_interface.dart';
 import 'package:flutter_modular/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
