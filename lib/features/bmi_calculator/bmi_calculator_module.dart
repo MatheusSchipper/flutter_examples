@@ -10,9 +10,9 @@ class BmiCalculatorModule extends ChildModule {
   @override
   List<Bind> get binds => [
         Bind<IBmiCalculatorRepository>((i) => BmiCalculatorRepository()),
-        Bind((i) => InputConverter()),
-        Bind((i) => GetBmiUsecase(repository: i())),
-        Bind((i) => BmiCalculatorCubit(usecase: i(), converter: i())),
+        Bind<IInputConverter>((i) => InputConverter()),
+        Bind<IGetBmiUsecase>((i) => GetBmiUsecase()),
+        Bind((i) => BmiCalculatorCubit()),
       ];
 
   @override

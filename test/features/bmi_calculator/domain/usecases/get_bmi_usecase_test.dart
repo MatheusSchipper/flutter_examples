@@ -1,19 +1,25 @@
 import 'package:dartz/dartz.dart';
 import 'package:examples/core/exceptions/failures.dart';
+import 'package:examples/features/bmi_calculator/bmi_calculator_module.dart';
 import 'package:examples/features/bmi_calculator/domain/repositories_interfaces/bmi_calculator_repository_interface.dart';
 import 'package:examples/features/bmi_calculator/domain/usecases/get_bmi_usecase.dart';
+import 'package:flutter_modular/flutter_modular_test.dart';
+import 'package:flutter_modular/flutter_modular.dart' as modular;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
 class MockRepository extends Mock implements IBmiCalculatorRepository {}
 
 void main() {
-  GetBmiUsecase usecase;
-  MockRepository mockRepository;
+  IGetBmiUsecase usecase;
+  IBmiCalculatorRepository mockRepository;
 
   setUp(() {
-    mockRepository = MockRepository();
-    usecase = GetBmiUsecase(repository: mockRepository);
+    initModule(BmiCalculatorModule(), changeBinds: [
+      modular.Bind<IBmiCalculatorRepository>((i) => MockRepository()),
+    ]);
+    mockRepository = modular.Modular.get<IBmiCalculatorRepository>();
+    usecase = modular.Modular.get<IGetBmiUsecase>();
   });
 
   test(

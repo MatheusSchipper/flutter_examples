@@ -2,19 +2,22 @@ import 'package:dartz/dartz.dart';
 import 'package:examples/core/exceptions/failures.dart';
 import 'package:examples/core/utils/constants.dart';
 import 'package:examples/core/utils/input_converter.dart';
+import 'package:examples/features/bmi_calculator/bmi_calculator_module.dart';
 import 'package:examples/features/bmi_calculator/domain/usecases/get_bmi_usecase.dart';
 import 'package:examples/features/bmi_calculator/presentation/cubit/bmi_calculator_cubit.dart';
+import 'package:flutter_modular/flutter_modular_test.dart';
+import 'package:flutter_modular/flutter_modular.dart' as modular;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-class MockGetBmiUsecase extends Mock implements GetBmiUsecase {}
+class MockGetBmiUsecase extends Mock implements IGetBmiUsecase {}
 
-class MockInputConverter extends Mock implements InputConverter {}
+class MockInputConverter extends Mock implements IInputConverter {}
 
 void main() {
   BmiCalculatorCubit cubit;
-  MockGetBmiUsecase mockUsecase;
-  MockInputConverter mockInputConverter;
+  IGetBmiUsecase mockUsecase;
+  IInputConverter mockInputConverter;
   double testWeight = 100;
   double testHeight = 100;
   String testWeightString = "100";
@@ -22,12 +25,13 @@ void main() {
   String testResult = 'Obesidade Grau III - IMC(${100.toStringAsFixed(2)})';
 
   setUp(() {
-    mockUsecase = MockGetBmiUsecase();
-    mockInputConverter = MockInputConverter();
-    cubit = BmiCalculatorCubit(
-      converter: mockInputConverter,
-      usecase: mockUsecase,
-    );
+    initModule(BmiCalculatorModule(), changeBinds: [
+      modular.Bind<IInputConverter>((i) => MockInputConverter()),
+      modular.Bind<IGetBmiUsecase>((i) => MockGetBmiUsecase()),
+    ]);
+    mockUsecase = modular.Modular.get<IGetBmiUsecase>();
+    mockInputConverter = modular.Modular.get<IInputConverter>();
+    cubit = modular.Modular.get<BmiCalculatorCubit>();
   });
 
   test('initialState is BmiCalculatorInitial', () {

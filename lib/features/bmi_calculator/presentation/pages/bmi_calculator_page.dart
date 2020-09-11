@@ -18,7 +18,7 @@ class _BmiCalculatorPageState extends State<BmiCalculatorPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => BmiCalculatorCubit(converter: converter, usecase: usecase),
+      create: (_) => BmiCalculatorCubit(),
       child: BmiCalculatorView(),
     );
   }

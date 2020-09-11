@@ -1,7 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:examples/core/exceptions/failures.dart';
 
-class InputConverter {
+abstract class IInputConverter {
+  Either<IFailure, double> stringToDouble(String input);
+}
+
+class InputConverter implements IInputConverter {
   Either<IFailure, double> stringToDouble(String input) {
     try {
       final value = double.parse(input);

@@ -1,12 +1,17 @@
 import 'package:dartz/dartz.dart';
 import 'package:examples/core/exceptions/failures.dart';
 import 'package:examples/features/bmi_calculator/domain/repositories_interfaces/bmi_calculator_repository_interface.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
-class GetBmiUsecase {
-  final IBmiCalculatorRepository repository;
+abstract class IGetBmiUsecase {
+  Either<IFailure, String> getBmi(double weight, double height);
+}
 
-  GetBmiUsecase({@required this.repository});
+class GetBmiUsecase implements IGetBmiUsecase {
+  final IBmiCalculatorRepository repository =
+      Modular.get<IBmiCalculatorRepository>();
+
+  GetBmiUsecase();
 
   Either<IFailure, String> getBmi(double weight, double height) {
     final result = repository.calculateBmi(weight, height);

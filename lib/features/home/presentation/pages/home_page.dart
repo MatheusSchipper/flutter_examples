@@ -10,9 +10,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final converter = Modular.get<InputConverter>();
-    final usecase = Modular.get<GetBmiUsecase>();
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Exemplos'),
@@ -28,8 +25,7 @@ class HomePage extends StatelessWidget {
               onPressed: () => Modular.to.pushNamed(peopleCounterRoute),
             ),
             BlocProvider(
-              create: (_) =>
-                  BmiCalculatorCubit(converter: converter, usecase: usecase),
+              create: (_) => BmiCalculatorCubit(),
               child: ButtonWidget(
                 text: '2 - Calculadora de IMC',
                 onPressed: () => Modular.to.pushNamed(bmiCalculatorRoute),

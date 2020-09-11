@@ -3,18 +3,16 @@ import 'package:equatable/equatable.dart';
 import 'package:examples/core/utils/constants.dart';
 import 'package:examples/core/utils/input_converter.dart';
 import 'package:examples/features/bmi_calculator/domain/usecases/get_bmi_usecase.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:meta/meta.dart';
 
 part 'bmi_calculator_state.dart';
 
 class BmiCalculatorCubit extends Cubit<BmiCalculatorState> {
-  final GetBmiUsecase usecase;
-  final InputConverter converter;
+  final IGetBmiUsecase usecase = Modular.get<IGetBmiUsecase>();
+  final IInputConverter converter = Modular.get<IInputConverter>();
 
-  BmiCalculatorCubit({
-    @required this.usecase,
-    @required this.converter,
-  }) : super(BmiCalculatorInitial());
+  BmiCalculatorCubit() : super(BmiCalculatorInitial());
 
   void calculateBmi(String weight, String height) {
     emit(BmiCalculatorCalculating());
