@@ -12,3 +12,9 @@ class InvalidInputFailure extends IFailure {
   @override
   List<Object> get props => [];
 }
+
+class ServerFailure extends IFailure {
+  ServerFailure({String message}) : super(message: message);
+  @override
+  List<Object> get props => [];
+}

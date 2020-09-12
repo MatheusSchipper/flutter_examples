@@ -8,3 +8,17 @@ abstract class CurrencyConverterState extends Equatable {
 }
 
 class CurrencyConverterInitial extends CurrencyConverterState {}
+
+class CurrencyConverterLoading extends CurrencyConverterState {}
+
+class CurrencyConverterDone extends CurrencyConverterState {
+  final Currency currency;
+
+  CurrencyConverterDone({@required this.currency});
+}
+
+class CurrencyConverterError extends CurrencyConverterState {
+  final String message;
+
+  CurrencyConverterError({@required this.message});
+}

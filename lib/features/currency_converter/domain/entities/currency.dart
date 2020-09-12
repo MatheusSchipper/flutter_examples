@@ -1,15 +1,12 @@
 import 'package:meta/meta.dart';
+import 'package:examples/features/currency_converter/domain/entities/currency_value.dart';
 
 class Currency {
-  final String name;
-  final double buy;
-  final double sell;
-  final double variation;
+  final CurrencyValue dolar;
+  final CurrencyValue euro;
 
   Currency({
-    @required this.name,
-    @required this.buy,
-    @required this.sell,
-    @required this.variation,
+    @required this.dolar,
+    @required this.euro,
   });
 }
