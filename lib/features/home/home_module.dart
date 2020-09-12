@@ -1,3 +1,4 @@
+import 'package:examples/features/todo_list/todo_list_module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../core/utils/constants.dart';
@@ -27,6 +28,10 @@ class HomeModule extends ChildModule {
         ModularRouter(
           currencyConverterRoute,
           module: CurrencyConverterModule(),
+        ),
+        ModularRouter(
+          todoListRoute,
+          module: TodoListModule(),
         ),
       ];
 }

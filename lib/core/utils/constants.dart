@@ -2,6 +2,7 @@
 const String peopleCounterRoute = '/people_counter';
 const String bmiCalculatorRoute = '/bmi_calculator';
 const String currencyConverterRoute = '/currency_converter';
+const String todoListRoute = '/todo_list';
 
 //Assets
 const String assetsDirectory = 'assets/images/';

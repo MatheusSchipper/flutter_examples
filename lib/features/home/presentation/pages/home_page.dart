@@ -16,25 +16,31 @@ class HomePage extends StatelessWidget {
       ),
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ButtonWidget(
-              text: '1 - Contador de pessoas',
-              onPressed: () => Modular.to.pushNamed(peopleCounterRoute),
-            ),
-            BlocProvider(
-              create: (_) => BmiCalculatorCubit(),
-              child: ButtonWidget(
-                text: '2 - Calculadora de IMC',
-                onPressed: () => Modular.to.pushNamed(bmiCalculatorRoute),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ButtonWidget(
+                text: '1 - Contador de pessoas',
+                onPressed: () => Modular.to.pushNamed(peopleCounterRoute),
               ),
-            ),
-            ButtonWidget(
-              text: '3 - Conversor de moedas',
-              onPressed: () => Modular.to.pushNamed(currencyConverterRoute),
-            ),
-          ],
+              BlocProvider(
+                create: (_) => BmiCalculatorCubit(),
+                child: ButtonWidget(
+                  text: '2 - Calculadora de IMC',
+                  onPressed: () => Modular.to.pushNamed(bmiCalculatorRoute),
+                ),
+              ),
+              ButtonWidget(
+                text: '3 - Conversor de moedas',
+                onPressed: () => Modular.to.pushNamed(currencyConverterRoute),
+              ),
+              ButtonWidget(
+                text: '4 - Lista de tarefas',
+                onPressed: () => Modular.to.pushNamed(todoListRoute),
+              ),
+            ],
+          ),
         ),
       ),
     );

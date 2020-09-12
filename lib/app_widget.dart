@@ -10,7 +10,7 @@ class AppWidget extends StatelessWidget {
       onGenerateRoute: Modular.generateRoute,
       theme: ThemeData(
         primaryColor: Colors.black,
-        accentColor: Colors.green,
+        accentColor: Colors.blue,
         inputDecorationTheme: InputDecorationTheme(
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.green[900]),
