@@ -39,6 +39,10 @@ class HomePage extends StatelessWidget {
                 text: '4 - Lista de tarefas',
                 onPressed: () => Modular.to.pushNamed(todoListRoute),
               ),
+              ButtonWidget(
+                text: '5 - Buscador de Gifs',
+                onPressed: () => Modular.to.pushNamed(gifFinderRoute),
+              ),
             ],
           ),
         ),

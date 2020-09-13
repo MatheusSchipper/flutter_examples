@@ -1,3 +1,4 @@
+import 'package:examples/features/gif_finder/gif_finder_module.dart';
 import 'package:examples/features/todo_list/todo_list_module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -32,6 +33,10 @@ class HomeModule extends ChildModule {
         ModularRouter(
           todoListRoute,
           module: TodoListModule(),
+        ),
+        ModularRouter(
+          gifFinderRoute,
+          module: GifFinderModule(),
         ),
       ];
 }
