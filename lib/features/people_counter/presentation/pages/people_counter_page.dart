@@ -49,7 +49,7 @@ class _PeopleCounterPageState extends State<PeopleCounterPage> {
           child: Stack(
             children: [
               Image.asset(
-                restauranteImage,
+                restaurantImage,
                 fit: BoxFit.cover,
                 height: double.infinity,
               ),

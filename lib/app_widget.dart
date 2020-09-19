@@ -28,7 +28,7 @@ class AppWidget extends StatelessWidget {
             fontSize: 40,
           ),
           button: TextStyle(
-            fontSize: 30,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
         ),

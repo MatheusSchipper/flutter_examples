@@ -19,11 +19,15 @@ class _TodoListPageState extends State<TodoListPage> {
   @override
   void initState() {
     super.initState();
-    _readData().then((value) {
-      setState(() {
-        _todoList = jsonDecode(value);
-      });
-    });
+    _readData().then(
+      (value) {
+        setState(
+          () {
+            _todoList = jsonDecode(value);
+          },
+        );
+      },
+    );
   }
 
   void _addToDo() {

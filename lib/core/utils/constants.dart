@@ -8,11 +8,16 @@ const String todoListRoute = '/todo_list';
 const String gifFinderRoute = '/gif_finder';
 const String gifDetailModuleRoute = '/detail';
 const String gifDetailRoute = '/gif_finder/detail';
+const String contactRoute = 'contact';
+const String contactDetailModuleRoute = '/register_contact';
+const String contactDetailRoute = '$contactRoute/register_contact';
 
 //Assets
 const String assetsDirectory = 'assets/images/';
 const String peopleCounterAssetsDirectory = '${assetsDirectory}people_counter/';
-const String restauranteImage = '${peopleCounterAssetsDirectory}restaurant.jpg';
+const String contactListAssetsDirectory = '${assetsDirectory}contact_list/';
+const String restaurantImage = '${peopleCounterAssetsDirectory}restaurant.jpg';
+const String personImage = '${contactListAssetsDirectory}person.png';
 
 //Messages
 //BmiCalculator
