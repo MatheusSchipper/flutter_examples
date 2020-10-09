@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:examples/core/utils/constants.dart';
-import 'package:examples/features/contact_list/helpers/contact_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+
+import '../../../../core/utils/constants.dart';
+import '../../helpers/contact_helper.dart';
 
 class ItemCardWidget extends StatelessWidget {
   final Contact contact;

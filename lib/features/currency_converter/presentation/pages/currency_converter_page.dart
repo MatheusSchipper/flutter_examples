@@ -1,10 +1,9 @@
-import 'package:examples/features/currency_converter/domain/entities/currency.dart';
-import 'package:examples/features/currency_converter/domain/usecases/currency_converter_usecase.dart';
-import 'package:examples/features/currency_converter/presentation/cubit/currency_converter_cubit.dart';
-import 'package:examples/features/currency_converter/presentation/widgets/currency_text_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+
+import '../../domain/entities/currency.dart';
+import '../cubit/currency_converter_cubit.dart';
+import '../widgets/currency_text_field_widget.dart';
 
 class CurrencyConverterPage extends StatefulWidget {
   @override

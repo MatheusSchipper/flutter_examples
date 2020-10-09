@@ -1,10 +1,9 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
-import 'package:examples/core/exceptions/exceptions.dart';
-import 'package:examples/features/currency_converter/data/datasources_interfaces/currency_datasource.dart';
-import 'package:examples/features/currency_converter/data/models/currency_model.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import '../../../../core/exceptions/exceptions.dart';
+import '../../data/datasources_interfaces/currency_datasource.dart';
+import '../../data/models/currency_model.dart';
 
 class CurrencyDatasource extends ICurrencyDatasource {
   Dio dio = Modular.get<Dio>();

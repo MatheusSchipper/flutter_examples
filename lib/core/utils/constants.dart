@@ -11,6 +11,7 @@ const String gifDetailRoute = '/gif_finder/detail';
 const String contactRoute = 'contact';
 const String contactDetailModuleRoute = '/register_contact';
 const String contactDetailRoute = '$contactRoute/register_contact';
+const String chatRoute = 'chat';
 
 //Assets
 const String assetsDirectory = 'assets/images/';

@@ -1,5 +1,7 @@
 import 'package:examples/core/utils/constants.dart';
+import 'package:examples/features/people_counter/presentation/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 class PeopleCounterPage extends StatefulWidget {
   @override
@@ -11,6 +13,7 @@ class _PeopleCounterPageState extends State<PeopleCounterPage> {
   var _infoText = "Local aberto";
   var _rotate = 0;
   var _maxCapacity = 10;
+  var _minCapacity = -1;
 
   bool canEnter;
 
@@ -19,11 +22,13 @@ class _PeopleCounterPageState extends State<PeopleCounterPage> {
       () {
         var current = _count + delta;
         _infoText = current < 0
-            ? "Mundo invertido?"
-            : current >= _maxCapacity ? "Local lotado" : "Pode entrar";
-        if (current <= _maxCapacity) {
+            ? "Mundo invertido"
+            : current >= _maxCapacity
+                ? "Local lotado"
+                : "Pode entrar";
+        if (current >= _minCapacity && current <= _maxCapacity) {
           if (current < 0) {
-            _infoText = "Mundo invertido";
+            // _infoText = "Mundo invertido";
             _rotate = 2;
           } else {
             _rotate = 0;
@@ -36,7 +41,7 @@ class _PeopleCounterPageState extends State<PeopleCounterPage> {
 
   @override
   Widget build(BuildContext context) {
-    canEnter = _count != _maxCapacity;
+    canEnter = _count < _maxCapacity && _count >= _minCapacity;
     return Scaffold(
       appBar: AppBar(
         title: Text('Contador de pessoas'),
@@ -58,7 +63,7 @@ class _PeopleCounterPageState extends State<PeopleCounterPage> {
                 child: Text(
                   '''Aplicação simples para demonstrar controles básicos utilizando SetState
 e utilização de Widgets como Card, Row, FlatButton e Image. Para interagir com esse exemplo, utilize
-os botões de incremento(+1) e decremento(-1).''',
+os botões de incremento(+) e decremento(-).''',
                   style: TextStyle(
                     fontSize: 15,
                     color: Colors.orange[200],
@@ -69,7 +74,7 @@ os botões de incremento(+1) e decremento(-1).''',
               Center(
                 child: Card(
                   elevation: 25,
-                  margin: EdgeInsets.symmetric(horizontal: 100, vertical: 200),
+                  margin: EdgeInsets.symmetric(horizontal: 50, vertical: 100),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25)),
                   ),
@@ -78,42 +83,6 @@ os botões de incremento(+1) e decremento(-1).''',
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
-                        'Pessoas: $_count',
-                        style: Theme.of(context).textTheme.bodyText2.copyWith(
-                              color: Colors.orange[100],
-                            ),
-                        textAlign: TextAlign.center,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: FlatButton(
-                              child: Text('-1'),
-                              textColor: Colors.orange,
-                              onPressed: () {
-                                _changeCount(-1);
-                              },
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: FlatButton(
-                              child: Text(
-                                '+1',
-                              ),
-                              textColor: Colors.orange,
-                              onPressed: canEnter
-                                  ? () {
-                                      _changeCount(1);
-                                    }
-                                  : null,
-                            ),
-                          ),
-                        ],
-                      ),
                       Text(
                         '$_infoText',
                         style: Theme.of(context)
@@ -126,16 +95,65 @@ os botões de incremento(+1) e decremento(-1).''',
                             ))
                             .bodyText1,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: LinearProgressIndicator(
-                          minHeight: 10,
-                          backgroundColor: Colors.grey,
-                          valueColor:
-                              AlwaysStoppedAnimation<Color>(Colors.orange),
-                          value: _count.toDouble() / 10,
+                      SleekCircularSlider(
+                        min: -1,
+                        max: 10,
+                        initialValue: _count.toDouble(),
+                        innerWidget: (value) => Center(
+                          child: Text(
+                            '${value.toInt()}',
+                            style: TextStyle(color: Colors.orange[100]),
+                          ),
+                        ),
+                        appearance: CircularSliderAppearance(
+                          customColors: CustomSliderColors(
+                            progressBarColors: [
+                              Colors.red,
+                              Colors.orange,
+                              Colors.white,
+                            ],
+                            dotColor: Colors.orange,
+                            progressBarColor: Colors.orange,
+                            trackColor: Colors.black,
+                          ),
                         ),
                       ),
+                      Text(
+                        'Pessoas',
+                        style: Theme.of(context).textTheme.bodyText2.copyWith(
+                              color: Colors.orange[100],
+                            ),
+                        textAlign: TextAlign.center,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ButtonWidget(
+                              onPressed: () {
+                                _changeCount(-1);
+                              },
+                              text: '-'),
+                          ButtonWidget(
+                            onPressed: canEnter
+                                ? () {
+                                    _changeCount(1);
+                                  }
+                                : null,
+                            text: '+',
+                          ),
+                        ],
+                      ),
+                      // Padding(
+                      //   padding: const EdgeInsets.all(8.0),
+                      //   child: LinearProgressIndicator(
+                      //     minHeight: 10,
+                      //     backgroundColor: Colors.grey,
+                      //     valueColor:
+                      //         Animation<Color>(),
+                      //         // AlwaysStoppedAnimation<Color>(Colors.orange),
+                      //     value: _count.toDouble() / 10,
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),

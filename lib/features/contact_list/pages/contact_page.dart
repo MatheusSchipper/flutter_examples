@@ -1,11 +1,11 @@
-import 'package:examples/core/utils/constants.dart';
-import 'package:examples/features/contact_list/helpers/contact_helper.dart';
-import 'package:examples/features/contact_list/pages/register_contact_page.dart';
-import 'package:examples/features/contact_list/pages/widgets/bottom_sheet_item_widget.dart';
-import 'package:examples/features/contact_list/pages/widgets/item_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../helpers/contact_helper.dart';
+import 'register_contact_page.dart';
+import 'widgets/bottom_sheet_item_widget.dart';
+import 'widgets/item_card_widget.dart';
 
 enum OrderOptions { orderAZ, orderZA }
 
