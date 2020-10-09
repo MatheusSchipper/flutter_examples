@@ -7,7 +7,6 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
-      // DeviceOrientation.portraitDown,
     ]);
     return MaterialApp(
       navigatorKey: Modular.navigatorKey,

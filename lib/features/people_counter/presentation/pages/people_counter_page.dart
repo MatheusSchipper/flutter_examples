@@ -28,7 +28,6 @@ class _PeopleCounterPageState extends State<PeopleCounterPage> {
                 : "Pode entrar";
         if (current >= _minCapacity && current <= _maxCapacity) {
           if (current < 0) {
-            // _infoText = "Mundo invertido";
             _rotate = 2;
           } else {
             _rotate = 0;
@@ -143,17 +142,6 @@ os botões de incremento(+) e decremento(-).''',
                           ),
                         ],
                       ),
-                      // Padding(
-                      //   padding: const EdgeInsets.all(8.0),
-                      //   child: LinearProgressIndicator(
-                      //     minHeight: 10,
-                      //     backgroundColor: Colors.grey,
-                      //     valueColor:
-                      //         Animation<Color>(),
-                      //         // AlwaysStoppedAnimation<Color>(Colors.orange),
-                      //     value: _count.toDouble() / 10,
-                      //   ),
-                      // ),
                     ],
                   ),
                 ),
