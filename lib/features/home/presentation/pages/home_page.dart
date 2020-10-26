@@ -12,55 +12,80 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Exemplos'),
+        title: Tooltip(
+          message: 'Barra de Título',
+          child: Text('Exemplos'),
+        ),
         centerTitle: true,
       ),
       backgroundColor: Colors.grey,
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ItemWidget(
-                icon: FontAwesome5Solid.users,
-                iconColor: Colors.orange,
-                text: '1 - Contador de pessoas',
-                onPressed: () => Modular.to.pushNamed(peopleCounterRoute),
-              ),
-              BlocProvider(
-                create: (_) => BmiCalculatorCubit(),
-                child: ItemWidget(
-                  icon: FontAwesome5Solid.weight,
-                  text: '2 - Calculadora de IMC',
-                  iconColor: Colors.green,
-                  onPressed: () => Modular.to.pushNamed(bmiCalculatorRoute),
+          child: Tooltip(
+            message: 'Lista com 6 exemplos',
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Tooltip(
+                  message: 'Opção 1 de 6 dos exemplos',
+                  child: ItemWidget(
+                    icon: FontAwesome5Solid.users,
+                    iconColor: Colors.orange,
+                    text: 'Contador de pessoas',
+                    onPressed: () => Modular.to.pushNamed(peopleCounterRoute),
+                  ),
                 ),
-              ),
-              ItemWidget(
-                icon: FontAwesome5Solid.dollar_sign,
-                text: '3 - Conversor de moedas',
-                iconColor: Colors.green[900],
-                onPressed: () => Modular.to.pushNamed(currencyConverterRoute),
-              ),
-              ItemWidget(
-                icon: FontAwesome5Solid.tasks,
-                text: '4 - Lista de tarefas',
-                iconColor: Colors.blueAccent,
-                onPressed: () => Modular.to.pushNamed(todoListRoute),
-              ),
-              ItemWidget(
-                icon: FontAwesome5Solid.images,
-                text: '5 - Buscador de Gifs',
-                iconColor: Colors.white,
-                onPressed: () => Modular.to.pushNamed(gifFinderRoute),
-              ),
-              ItemWidget(
-                icon: FontAwesome5Solid.address_card,
-                text: '6 - Lista de contatos',
-                iconColor: Colors.red,
-                onPressed: () => Modular.to.pushNamed(contactRoute),
-              ),
-            ],
+                Tooltip(
+                  message: 'Opção 2 de 6 dos exemplos',
+                  child: BlocProvider(
+                    create: (_) => BmiCalculatorCubit(),
+                    child: ItemWidget(
+                      icon: FontAwesome5Solid.weight,
+                      text: 'Calculadora de IMC',
+                      iconColor: Colors.green,
+                      onPressed: () => Modular.to.pushNamed(bmiCalculatorRoute),
+                    ),
+                  ),
+                ),
+                Tooltip(
+                  message: 'Opção 3 de 6 dos exemplos',
+                  child: ItemWidget(
+                    icon: FontAwesome5Solid.dollar_sign,
+                    text: 'Conversor de moedas',
+                    iconColor: Colors.green[900],
+                    onPressed: () =>
+                        Modular.to.pushNamed(currencyConverterRoute),
+                  ),
+                ),
+                Tooltip(
+                  message: 'Opção 4 de 6 dos exemplos',
+                  child: ItemWidget(
+                    icon: FontAwesome5Solid.tasks,
+                    text: 'Lista de tarefas',
+                    iconColor: Colors.blueAccent,
+                    onPressed: () => Modular.to.pushNamed(todoListRoute),
+                  ),
+                ),
+                Tooltip(
+                  message: 'Opção 5 de 6 dos exemplos',
+                  child: ItemWidget(
+                    icon: FontAwesome5Solid.images,
+                    text: 'Buscador de Gifs',
+                    iconColor: Colors.white,
+                    onPressed: () => Modular.to.pushNamed(gifFinderRoute),
+                  ),
+                ),
+                Tooltip(
+                  message: 'Opção 6 de 6 dos exemplos',
+                  child: ItemWidget(
+                    icon: FontAwesome5Solid.address_card,
+                    text: 'Lista de contatos',
+                    iconColor: Colors.red,
+                    onPressed: () => Modular.to.pushNamed(contactRoute),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

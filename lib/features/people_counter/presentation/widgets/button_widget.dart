@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class ButtonWidget extends StatelessWidget {
   final Function onPressed;
   final String text;
+  final String tooltip;
 
   const ButtonWidget({
     Key key,
     @required this.onPressed,
     @required this.text,
+    @required this.tooltip,
   }) : super(key: key);
 
   @override
@@ -36,10 +38,16 @@ class ButtonWidget extends StatelessWidget {
             ),
           ],
         ),
-        child: FlatButton(
-          child: Text(
-            text,
-            style: TextStyle(fontSize: 20),
+        child: RaisedButton(
+          color: Colors.transparent,
+          disabledColor: Colors.transparent,
+          elevation: 0,
+          child: Tooltip(
+            message: tooltip,
+            child: Text(
+              text,
+              style: TextStyle(fontSize: 20),
+            ),
           ),
           textColor: Colors.orange,
           onPressed: onPressed,

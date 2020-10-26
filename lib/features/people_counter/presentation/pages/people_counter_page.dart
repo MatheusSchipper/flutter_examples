@@ -1,6 +1,7 @@
 import 'package:examples/core/utils/constants.dart';
 import 'package:examples/features/people_counter/presentation/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 class PeopleCounterPage extends StatefulWidget {
@@ -43,7 +44,19 @@ class _PeopleCounterPageState extends State<PeopleCounterPage> {
     canEnter = _count < _maxCapacity && _count >= _minCapacity;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Contador de pessoas'),
+        leading: MergeSemantics(
+          child: IconButton(
+            tooltip: 'Botão Voltar',
+            icon: Icon(
+              FontAwesome5Solid.chevron_left,
+            ),
+            onPressed: () => Navigator.pop(context),
+          ),
+        ),
+        title: Tooltip(
+          message: 'Barra de título',
+          child: Text('Contador de pessoas'),
+        ),
         centerTitle: true,
       ),
       backgroundColor: Colors.black,
@@ -52,22 +65,27 @@ class _PeopleCounterPageState extends State<PeopleCounterPage> {
           quarterTurns: _rotate,
           child: Stack(
             children: [
-              Image.asset(
-                restaurantImage,
-                fit: BoxFit.cover,
-                height: double.infinity,
+              ExcludeSemantics(
+                child: Image.asset(
+                  restaurantImage,
+                  fit: BoxFit.cover,
+                  height: double.infinity,
+                ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  '''Aplicação simples para demonstrar controles básicos utilizando SetState
+              Tooltip(
+                message: 'Texto introdutório',
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    '''Aplicação simples para demonstrar controles básicos utilizando SetState
 e utilização de Widgets como Card, Row, FlatButton e Image. Para interagir com esse exemplo, utilize
 os botões de incremento(+) e decremento(-).''',
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.orange[200],
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.orange[200],
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
                 ),
               ),
               Center(
@@ -82,65 +100,86 @@ os botões de incremento(+) e decremento(-).''',
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
-                        '$_infoText',
-                        style: Theme.of(context)
-                            .textTheme
-                            .copyWith(
-                                bodyText1: TextStyle(
-                              color: Colors.orange[100],
-                              fontStyle: FontStyle.italic,
-                              fontSize: 30,
-                            ))
-                            .bodyText1,
-                      ),
-                      SleekCircularSlider(
-                        min: -1,
-                        max: 10,
-                        initialValue: _count.toDouble(),
-                        innerWidget: (value) => Center(
-                          child: Text(
-                            '${value.toInt()}',
-                            style: TextStyle(color: Colors.orange[100]),
-                          ),
-                        ),
-                        appearance: CircularSliderAppearance(
-                          customColors: CustomSliderColors(
-                            progressBarColors: [
-                              Colors.red,
-                              Colors.orange,
-                              Colors.white,
-                            ],
-                            dotColor: Colors.orange,
-                            progressBarColor: Colors.orange,
-                            trackColor: Colors.black,
-                          ),
+                      Tooltip(
+                        message: 'Informação sobre a lotação do local.',
+                        child: Text(
+                          '$_infoText',
+                          style: Theme.of(context)
+                              .textTheme
+                              .copyWith(
+                                  bodyText1: TextStyle(
+                                color: Colors.orange[100],
+                                fontStyle: FontStyle.italic,
+                                fontSize: 30,
+                              ))
+                              .bodyText1,
                         ),
                       ),
-                      Text(
-                        'Pessoas',
-                        style: Theme.of(context).textTheme.bodyText2.copyWith(
-                              color: Colors.orange[100],
+                      Tooltip(
+                        message: 'Número de pessoas no local',
+                        child: SleekCircularSlider(
+                          min: -1,
+                          max: 10,
+                          initialValue: _count.toDouble(),
+                          innerWidget: (value) => Center(
+                            child: Text(
+                              '${value.toInt()}',
+                              style: TextStyle(color: Colors.orange[100]),
                             ),
-                        textAlign: TextAlign.center,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ButtonWidget(
-                              onPressed: () {
-                                _changeCount(-1);
-                              },
-                              text: '-'),
-                          ButtonWidget(
-                            onPressed: canEnter
-                                ? () {
-                                    _changeCount(1);
-                                  }
-                                : null,
-                            text: '+',
                           ),
-                        ],
+                          appearance: CircularSliderAppearance(
+                            customColors: CustomSliderColors(
+                              progressBarColors: [
+                                Colors.red,
+                                Colors.orange,
+                                Colors.white,
+                              ],
+                              dotColor: Colors.orange,
+                              progressBarColor: Colors.orange,
+                              trackColor: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ),
+                      ExcludeSemantics(
+                        child: Text(
+                          'Pessoas',
+                          style: Theme.of(context).textTheme.bodyText2.copyWith(
+                                color: Colors.orange[100],
+                              ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Tooltip(
+                        message: 'Botões para remover ou inserir pessoas',
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Semantics(
+                              enabled: _count != _minCapacity,
+                              button: true,
+                              child: ButtonWidget(
+                                  tooltip: 'Botão decremento',
+                                  onPressed: () {
+                                    _changeCount(-1);
+                                  },
+                                  text: '-'),
+                            ),
+                            Semantics(
+                              button: true,
+                              enabled: canEnter,
+                              child: ButtonWidget(
+                                tooltip: 'Botão incremento',
+                                onPressed: canEnter
+                                    ? () {
+                                        _changeCount(1);
+                                      }
+                                    : null,
+                                text: '+',
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
