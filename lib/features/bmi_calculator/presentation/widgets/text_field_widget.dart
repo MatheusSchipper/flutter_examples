@@ -2,15 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
 class TextFieldWidget extends StatelessWidget {
-  final String text;
+  final String labelText;
   final TextEditingController controller;
-
-  /// String Fuction (value) {}
   final Function validator;
 
   const TextFieldWidget({
     Key key,
-    @required this.text,
+    @required this.labelText,
     @required this.controller,
     @required this.validator,
   }) : super(key: key);
@@ -30,17 +28,11 @@ class TextFieldWidget extends StatelessWidget {
                 Radius.circular(15),
               ),
             ),
-            labelText: text,
-            labelStyle: TextStyle(
-              color: Colors.green,
-            ),
+            labelText: labelText,
           ),
           textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 24,
-            color: Colors.green,
-          ),
-          cursorColor: Colors.green,
+          style: Theme.of(context).textTheme.button,
+          cursorColor: Theme.of(context).accentColor,
           validator: validator,
         ),
       ),

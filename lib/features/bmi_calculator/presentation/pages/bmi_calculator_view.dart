@@ -1,10 +1,10 @@
+import 'package:examples/core/presentation/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 
 import '../cubit/bmi_calculator_cubit.dart';
 import '../widgets/info_text_widget.dart';
-import '../widgets/raised_button_widget.dart';
 import '../widgets/text_field_widget.dart';
 
 class BmiCalculatorView extends StatefulWidget {
@@ -15,17 +15,10 @@ class BmiCalculatorView extends StatefulWidget {
 class _BmiCalculatorViewState extends State<BmiCalculatorView> {
   TextEditingController weightController = TextEditingController();
   TextEditingController heightController = TextEditingController();
+  String initialHeightField = 'Altura (cm)';
+  String initialWeightField = 'Peso (kg)';
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
-  void _resetFilters(BuildContext context) {
-    weightController.text = '';
-    weightController.clear();
-    heightController.text = '';
-    heightController.clear();
-    context.bloc<BmiCalculatorCubit>().reset();
-    _formKey.currentState.reset();
-  }
 
   Widget bmiCalculatorWidget(BuildContext context, BmiCalculatorState state) {
     if (state is BmiCalculatorCalculating) {
@@ -37,13 +30,13 @@ class _BmiCalculatorViewState extends State<BmiCalculatorView> {
       );
     } else if (state is BmiCalculatorDone) {
       return InfoTextWidget(
-        infoText: state.bmiResult,
-        textColor: Colors.green,
+        infoText: 'Resultado: ${state.bmiResult}',
+        textColor: Theme.of(context).accentColor,
       );
     } else {
       return InfoTextWidget(
         infoText: "Informe seus dados",
-        textColor: Colors.green,
+        textColor: Theme.of(context).accentColor,
       );
     }
   }
@@ -54,13 +47,12 @@ class _BmiCalculatorViewState extends State<BmiCalculatorView> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Calculadora de IMC'),
-        backgroundColor: Colors.green,
-        centerTitle: true,
+        backgroundColor: Theme.of(context).appBarTheme.color,
         actions: [
           IconButton(
-            icon: Icon(Icons.refresh),
+            icon: Icon(FontAwesome5Solid.redo),
             onPressed: () {
-              _resetFilters(context);
+              _resetFields(context);
             },
           ),
         ],
@@ -74,34 +66,39 @@ class _BmiCalculatorViewState extends State<BmiCalculatorView> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Icon(
-                    Icons.person_outline,
+                    FontAwesome5Solid.weight,
                     size: screenSize.height * 0.2,
-                    color: Colors.green,
+                    color: Theme.of(context).accentColor,
+                  ),
+                  Divider(
+                    height: MediaQuery.of(context).size.height * 0.05,
+                    color: Theme.of(context).scaffoldBackgroundColor,
                   ),
                   TextFieldWidget(
-                    text: 'Peso (kg)',
+                    labelText: initialWeightField,
                     controller: weightController,
                     validator: (String value) {
                       if (value.isEmpty) return "Insira seu peso!";
                     },
                   ),
                   TextFieldWidget(
-                    text: 'Altura (cm)',
+                    labelText: initialHeightField,
                     controller: heightController,
                     validator: (String value) {
                       if (value.isEmpty) return "Insira sua altura!";
                     },
                   ),
-                  RaisedButtonWidget(
-                      text: 'Calcular',
+                  ButtonWidget(
                       onPressed: () {
-                        Modular.to.pushNamed('/teste', arguments: 'teste');
-                        if (_formKey.currentState.validate())
+                        if (_formKey.currentState.validate()) {
                           context.bloc<BmiCalculatorCubit>().calculateBmi(
                                 weightController.text,
                                 heightController.text,
                               );
-                      }),
+                        }
+                      },
+                      text: 'Calcular',
+                      tooltip: 'Botão para realizar o cálculo'),
                   bmiCalculatorWidget(context, state),
                 ],
               ),
@@ -110,5 +107,11 @@ class _BmiCalculatorViewState extends State<BmiCalculatorView> {
         },
       ),
     );
+  }
+
+  void _resetFields(BuildContext context) {
+    weightController.clear();
+    heightController.clear();
+    context.bloc<BmiCalculatorCubit>().reset();
   }
 }

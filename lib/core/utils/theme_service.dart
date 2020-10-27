@@ -29,9 +29,12 @@ class ThemeService extends ChangeNotifier {
         buttonColor: Colors.orange[100],
         disabledColor: Colors.black,
         accentColor: Colors.black,
+        indicatorColor: Colors.green,
         cardTheme: CardTheme(
           color: Colors.orange.withOpacity(0.7),
         ),
+        cursorColor: Colors.black,
+        textSelectionHandleColor: Colors.black,
         scaffoldBackgroundColor: Colors.orange[200],
         appBarTheme: AppBarTheme(
           color: Colors.orange,
@@ -56,6 +59,12 @@ class ThemeService extends ChangeNotifier {
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.orange),
             borderRadius: BorderRadius.circular(15),
+          ),
+          labelStyle: TextStyle(
+            color: Colors.black,
+          ),
+          hintStyle: TextStyle(
+            color: Colors.black,
           ),
         ),
         textTheme: TextTheme(
@@ -153,6 +162,20 @@ class ThemeService extends ChangeNotifier {
             color: Colors.orange,
           ),
         ),
+        cursorColor: Colors.orange,
+        textSelectionHandleColor: Colors.orange,
+        inputDecorationTheme: InputDecorationTheme(
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.orange[100]),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.orange[100]),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          labelStyle: TextStyle(color: Colors.orange[100]),
+          hintStyle: TextStyle(color: Colors.orange[100]),
+        ),
         textTheme: TextTheme(
           headline1: TextStyle(
             fontFamily: fontLight,
@@ -222,16 +245,6 @@ class ThemeService extends ChangeNotifier {
           ),
         ),
         scaffoldBackgroundColor: Colors.grey[850],
-        inputDecorationTheme: InputDecorationTheme(
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.orange[100]),
-            borderRadius: BorderRadius.circular(15),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.orange[100]),
-            borderRadius: BorderRadius.circular(15),
-          ),
-        ),
         fontFamily: fontRegular,
       );
 }

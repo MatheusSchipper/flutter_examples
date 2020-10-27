@@ -1,5 +1,5 @@
 import 'package:examples/core/utils/constants.dart';
-import 'package:examples/features/people_counter/presentation/widgets/button_widget.dart';
+import 'package:examples/core/presentation/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
