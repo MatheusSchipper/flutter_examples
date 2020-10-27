@@ -2,44 +2,44 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-class AppWidget extends StatelessWidget {
+import 'core/utils/theme_service.dart';
+
+class AppWidget extends StatefulWidget {
+  @override
+  _AppWidgetState createState() => _AppWidgetState();
+}
+
+class _AppWidgetState extends State<AppWidget> with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    ThemeService.instance.changeThemeListener();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangePlatformBrightness() {
+    ThemeService.instance.changeThemeListener();
+  }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
-    return MaterialApp(
-      navigatorKey: Modular.navigatorKey,
-      initialRoute: Modular.initialRoute,
-      onGenerateRoute: Modular.generateRoute,
-      theme: ThemeData(
-        primaryColor: Colors.black,
-        accentColor: Colors.blue,
-        inputDecorationTheme: InputDecorationTheme(
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black),
-            borderRadius: BorderRadius.circular(15),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black),
-            borderRadius: BorderRadius.circular(15),
-          ),
-        ),
-        textTheme: TextTheme(
-          bodyText2: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 40,
-          ),
-          button: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        fontFamily: 'Titillium',
-        buttonTheme: ButtonThemeData(
-          textTheme: ButtonTextTheme.accent,
-        ),
+    return AnimatedBuilder(
+      animation: ThemeService.instance,
+      builder: (context, child) => MaterialApp(
+        navigatorKey: Modular.navigatorKey,
+        initialRoute: Modular.initialRoute,
+        onGenerateRoute: Modular.generateRoute,
+        theme: ThemeService.instance.currentTheme,
       ),
     );
   }

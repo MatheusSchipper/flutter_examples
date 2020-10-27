@@ -14,7 +14,7 @@ const String contactDetailRoute = '$contactRoute/register_contact';
 const String chatRoute = 'chat';
 
 //Assets
-const String assetsDirectory = 'assets/images/';
+const String assetsDirectory = 'images/';
 const String peopleCounterAssetsDirectory = '${assetsDirectory}people_counter/';
 const String contactListAssetsDirectory = '${assetsDirectory}contact_list/';
 const String restaurantImage = '${peopleCounterAssetsDirectory}restaurant.jpg';
@@ -36,3 +36,9 @@ const String trendingGifUrl =
 ///
 const String searchGifUrl =
     "https://api.giphy.com/v1/gifs/search?api_key=$giphyKey&limit=25&rating=g&lang=en";
+
+// Fonts
+const String fontExtraLight = 'ExtraLight';
+const String fontLight = 'Light';
+const String fontRegular = 'Regular';
+const String fontSemiBold = 'SemiBold';

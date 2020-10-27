@@ -16,42 +16,22 @@ class ButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Colors.black,
-              Colors.grey,
-            ],
-          ),
+      child: RaisedButton(
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(15),
           ),
-          boxShadow: [
-            BoxShadow(
-              spreadRadius: -2,
-              blurRadius: 10,
-              offset: Offset(7, 7),
-              color: Colors.black.withOpacity(0.5),
-            ),
-          ],
         ),
-        child: RaisedButton(
-          color: Colors.transparent,
-          disabledColor: Colors.transparent,
-          elevation: 0,
-          child: Tooltip(
-            message: tooltip,
-            child: Text(
-              text,
-              style: TextStyle(fontSize: 20),
-            ),
+        elevation: 10,
+        child: Tooltip(
+          message: tooltip,
+          child: Text(
+            text,
+            style: Theme.of(context).textTheme.button,
           ),
-          textColor: Colors.orange,
-          onPressed: onPressed,
         ),
+        textColor: Theme.of(context).textTheme.button.color,
+        onPressed: onPressed,
       ),
     );
   }
