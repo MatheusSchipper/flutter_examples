@@ -56,14 +56,16 @@ class _PeopleCounterPageState extends State<PeopleCounterPage> {
       body: SafeArea(
         child: Stack(
           children: [
-            ExcludeSemantics(
+            Tooltip(
+              message:
+                  'Imagem de fundo de um restaurante para demonstrar exemplos de uso pra o contador de pessoas.',
               child: Image.asset(
                 restaurantImage,
                 fit: BoxFit.cover,
                 height: double.infinity,
               ),
             ),
-            Column(
+            ListView(
               children: [
                 Tooltip(
                   message: 'Texto introdutório',
@@ -82,7 +84,8 @@ os botões de incremento(+1) e decremento(-1).''',
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.only(
+                      left: 12.0, right: 12.0, bottom: 12.0),
                   child: Card(
                     elevation: 25,
                     shape: RoundedRectangleBorder(

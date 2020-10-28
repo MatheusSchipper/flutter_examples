@@ -18,23 +18,26 @@ class ButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: RaisedButton(
-        focusNode: focusNode,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(15),
+      child: Container(
+        height: MediaQuery.of(context).size.height * 0.1,
+        child: RaisedButton(
+          focusNode: focusNode,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(15),
+            ),
           ),
-        ),
-        elevation: 10,
-        child: Tooltip(
-          message: tooltip,
-          child: Text(
-            text,
-            style: Theme.of(context).textTheme.button,
+          elevation: 10,
+          child: Tooltip(
+            message: tooltip,
+            child: Text(
+              text,
+              style: Theme.of(context).textTheme.button,
+            ),
           ),
+          textColor: Theme.of(context).textTheme.button.color,
+          onPressed: onPressed,
         ),
-        textColor: Theme.of(context).textTheme.button.color,
-        onPressed: onPressed,
       ),
     );
   }

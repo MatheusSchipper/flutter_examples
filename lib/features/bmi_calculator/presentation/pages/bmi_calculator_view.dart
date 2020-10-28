@@ -122,7 +122,8 @@ class _BmiCalculatorViewState extends State<BmiCalculatorView> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    ExcludeSemantics(
+                    Tooltip(
+                      message: 'Ícone de uma balança na cor preta.',
                       child: Icon(
                         FontAwesome5Solid.weight,
                         size: screenSize.height * 0.2,
@@ -174,7 +175,7 @@ class _BmiCalculatorViewState extends State<BmiCalculatorView> {
                           }
                         },
                         text: 'Calcular',
-                        tooltip: 'Botão para realizar o cálculo'),
+                        tooltip: 'Botão para realizar o cálculo do IMC.'),
                     bmiCalculatorWidget(context, state),
                   ],
                 ),
