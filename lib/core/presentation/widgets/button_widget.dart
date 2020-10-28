@@ -4,12 +4,14 @@ class ButtonWidget extends StatelessWidget {
   final Function onPressed;
   final String text;
   final String tooltip;
+  final FocusNode focusNode;
 
   const ButtonWidget({
     Key key,
     @required this.onPressed,
     @required this.text,
     @required this.tooltip,
+    @required this.focusNode,
   }) : super(key: key);
 
   @override
@@ -17,6 +19,7 @@ class ButtonWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: RaisedButton(
+        focusNode: focusNode,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(15),

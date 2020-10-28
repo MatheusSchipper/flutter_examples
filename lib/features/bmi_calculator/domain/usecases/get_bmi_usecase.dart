@@ -29,11 +29,11 @@ class GetBmiUsecase implements IGetBmiUsecase {
         } else if (bmi >= 24.9 && bmi < 29.9) {
           info = "Levemente Acima do Peso";
         } else if (bmi >= 29.9 && bmi < 34.9) {
-          info = "Obesidade Grau I";
+          info = "Obesidade Grau 1";
         } else if (bmi >= 34.9 && bmi < 39.9) {
-          info = "Obesidade Grau II";
+          info = "Obesidade Grau 2";
         } else {
-          info = "Obesidade Grau III";
+          info = "Obesidade Grau 3";
         }
         return Right('$info - IMC($bmiFormatted)');
       },

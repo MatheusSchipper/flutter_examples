@@ -25,7 +25,7 @@ class ThemeService extends ChangeNotifier {
   }
 
   ThemeData get _lightTheme => ThemeData(
-        primaryColor: Colors.orange,
+        primaryColor: Colors.orange[800],
         buttonColor: Colors.orange[100],
         disabledColor: Colors.black,
         accentColor: Colors.black,
@@ -37,7 +37,7 @@ class ThemeService extends ChangeNotifier {
         textSelectionHandleColor: Colors.black,
         scaffoldBackgroundColor: Colors.orange[200],
         appBarTheme: AppBarTheme(
-          color: Colors.orange,
+          color: Colors.orange[800],
           centerTitle: true,
           elevation: 10,
           textTheme: TextTheme(

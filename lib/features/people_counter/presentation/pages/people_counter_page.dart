@@ -17,6 +17,9 @@ class _PeopleCounterPageState extends State<PeopleCounterPage> {
 
   bool canEnter;
 
+  FocusNode incrementFocusNode = FocusNode();
+  FocusNode decrementFocusNode = FocusNode();
+
   void _changeCount(int delta) {
     setState(
       () {
@@ -146,6 +149,7 @@ os botões de incremento(+1) e decremento(-1).''',
                               button: true,
                               enabled: _count > _minCapacity,
                               child: ButtonWidget(
+                                  focusNode: decrementFocusNode,
                                   tooltip: 'Botão decremento',
                                   onPressed: _count > _minCapacity
                                       ? () {
@@ -158,6 +162,7 @@ os botões de incremento(+1) e decremento(-1).''',
                               button: true,
                               enabled: canEnter,
                               child: ButtonWidget(
+                                focusNode: incrementFocusNode,
                                 tooltip: 'Botão incremento',
                                 onPressed: canEnter
                                     ? () {
