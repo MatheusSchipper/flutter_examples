@@ -70,8 +70,27 @@ Para resolver esse problema, você deve criar um arquivo .dart na pasta lib/core
 
  - [Flutter](https://flutter.dev/)
  
+ 
+### Telas de exemplo da aplicação
+ - Tela inicial (Tema claro)
+<img src="https://github.com/MatheusSchipper/flutter_examples/blob/main/screenshots/HomePage_LightTheme.png" width="300" alt="Imagem da tela inicial do projeto, que possui um cabeçalho na cor laranja com o texto 'Exemplos' na cor preta, além de um ícone de um círculo de duas cores, que é responsável pelo controle do tema claro/escuro, seguido de uma lista de botões na cor laranja claro com os exemplos criados. A cor de fundo da tela é na cor laranja, num tom entre o laranja do cabeçalho e o dos botões. Os textos e ícones estão na cor preta.">
+
+ - Tela inicial (Tema escuro)
+<img src="https://github.com/MatheusSchipper/flutter_examples/blob/main/screenshots/HomePage_DarkTheme.png" width="300" alt="Imagem da tela inicial do projeto, que possui um cabeçalho na cor preta com o texto 'Exemplos' na cor laranja, além de um ícone de um círculo de duas cores, que é responsável pelo controle do tema claro/escuro, seguido de uma lista de botões na cor preta  com os exemplos criados. A cor de fundo da tela é na cor cinza escuro. Os textos dos botões estão na cor branca e os ícones na cor laranja claro.">
+
+ - Tela Contador de pessoas (Tema claro)
+<img src="https://github.com/MatheusSchipper/flutter_examples/blob/main/screenshots/PeopleCounter_LightTheme.png" width="300" alt="Imagem da tela Contador de Pessoas, que possui um cabeçalho na cor laranja com o texto 'Contador de pessoas' na cor preta, seguido de um texto introdutório e um cartão com a quantidade de pessoas, além de dois botões para incrementar (+1) e decrementar(-1) o número de pessoas (nessa imagem, há 0 pessoas). O botão -1 está desabilitado e está na cor cinza com o texto na cor preta. O botão +1 está habilitado e está na cor laranja claro com o texto na cor preta.">
+
+ - Tela Contador de pessoas (Tema escuro)
+<img src="https://github.com/MatheusSchipper/flutter_examples/blob/main/screenshots/PeopleCounter_DarkTheme.png" width="300" alt="Imagem da tela Contador de Pessoas, que possui um cabeçalho na cor preta com o texto 'Contador de pessoas' na cor laranja, seguido de um texto introdutório e um cartão com a quantidade de pessoas, além de dois botões para incrementar (+1) e decrementar(-1) o número de pessoas (nessa imagem, há 0 pessoas). O botão -1 está desabilitado e está na cor cinza com o texto na cor laranja claro. O botão +1 está habilitado e está na cor preta com o texto na cor laranja claro.">
+
+ - Tela Calculadora de IMC (Tema claro)
+<img src="https://github.com/MatheusSchipper/flutter_examples/blob/main/screenshots/BMICalculator_LightTheme.png" width="300" alt="Imagem da tela Calculadora de IMC, que possui um cabeçalho na cor laranja com o texto 'Calculadora de IMC' na cor preta, além de um ícone de atualizar, na cor preta, que serve para apagar os valores dos campos Peso e Altura, seguido de um ícone de uma balança na cor preta, campos para pareenchimento de Peso e Altura e um botão na cor laranja claro com o texto 'Calcular', na cor preta, para realizar o cálculo. Abaixo do botão é mostrado o texto 'Informe seus dados' na cor preta, que é atualizado para o resultado do IMC após o cálculo. A cor de fundo da tela é um tom de laranja, mais claro que o tom do cabeçalho e mais forte que o tom da cor dos botões.">
+
+ - Tela Calculadora de IMC (Tema escuro)
+<img src="https://github.com/MatheusSchipper/flutter_examples/blob/main/screenshots/BMICalculator_DarkTheme.png" width="300" alt="Imagem da tela Calculadora de IMC, que possui um cabeçalho na cor preta com o texto 'Calculadora de IMC', na cor laranja, além de um ícone de atualizar, na cor laranja, que serve para apagar os valores dos campos Peso e Altura, seguido de um ícone de uma balança na cor laranja, campos para pareenchimento de Peso e Altura e um botão na cor preta com o texto 'Calcular', na cor laranja claro, para realizar o cálculo. Abaixo do botão é mostrado o texto 'Informe seus dados' na cor laranja, que é atualizado para o resultado do IMC após o cálculo. A cor de fundo da tela é cinza.">
+
 ### Autor
----
 Desenvolvido por Matheus Schipper. Quaisquer dúvidas/reclamações/sugestões, entre em contato comigo!
 
 [![Linkedin Badge](https://img.shields.io/badge/-Matheus_Schipper-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/matheusschipper/)](https://www.linkedin.com/in/matheusschipper/)
